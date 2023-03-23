@@ -4,7 +4,6 @@ import { compare } from 'bcrypt'
 
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
-import FacebookProvider from 'next-auth/providers/facebook'
 
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 
@@ -20,10 +19,6 @@ export default NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
-    // FacebookProvider({
-    //   clientId: process.env.FACEBOOK_CLIENT_ID || '',
-    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET || '',
-    // }),
     Credentials({
       id: 'credentials',
       name: 'Credentials',
@@ -66,10 +61,10 @@ export default NextAuth({
     signIn: '/auth',
   },
   debug: process.env.NODE_ENV === 'development',
+  adapter: PrismaAdapter(prismadb),
   session: {
     strategy: 'jwt',
   },
-  adapter: PrismaAdapter(prismadb),
   jwt: {
     secret: process.env.NEXTAUTH_JWT_SECRET,
   },
