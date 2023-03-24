@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
-
   if (!session) {
     return {
       redirect: {
@@ -15,11 +14,11 @@ export async function getServerSideProps(context: NextPageContext) {
       }
     }
   }
-
   return {
     props: {}
   }
 }
+
 const profiles = () => {
   const router  = useRouter();
   const {data: user} = useCurrentUser();
