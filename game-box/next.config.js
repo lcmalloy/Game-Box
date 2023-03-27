@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/Game-Box/game-box/',
+  basePath: '/Game-Box',
   experimental: {
     appDir: true,
   },
