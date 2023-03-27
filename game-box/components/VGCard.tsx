@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import {BsFillPlayCircleFill} from 'react-icons/bs'
 import { useRouter } from 'next/router'

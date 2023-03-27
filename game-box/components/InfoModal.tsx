@@ -40,7 +40,6 @@ const InfoModal: React.FC<InfoModalProps> = ({
       <div className="relative w-auto mx-auto max-w-3xl rounded-md overflow-hidden">
         <div className={`${isVisible ? 'scale-100' : 'scale-0'} transform duration-300 relative flex-auto bg-zinc-900 drop-shadow-md`}>
           <div className="relative h-96">
-            {console.log('------video----', data?.videoUrl)}
             <video className="w-full brightness-[60%] object-cover h-full" src={data?.videoUrl} poster={data?.thumbnailUrl}></video>
             <div onClick={handleClose} className="cursor-pointer absolute top-3 right-3 h-10 w-10 rounded-full flex items-center justify-center">
               <AiFillCloseCircle className="text-purple-500 hover:text-purple-700 transition" size={50} />
