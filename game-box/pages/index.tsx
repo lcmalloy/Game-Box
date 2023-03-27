@@ -6,6 +6,8 @@ import Billboard from '../components/Billboard'
 import VideoGameList from '../components/VideoGameList'
 import useVideoGameList from '@/hooks/useVideoGameList'
 import useFavorites from '@/hooks/useFavorites'
+import InfoModal from '@/components/InfoModal'
+import useInfoModal from '@/hooks/useInfoModal'
 
 
 export async function getServerSideProps(context: NextPageContext) {
@@ -28,8 +30,11 @@ export async function getServerSideProps(context: NextPageContext) {
 export default function Home() {
   const { data: videoGame = []} = useVideoGameList()
   const { data: favorites = []} = useFavorites()
+
+  const { isOpen, closeModal } = useInfoModal()
   return (
     <>
+      <InfoModal visible={isOpen} onClose={closeModal}/>
       <Navbar />
       <Billboard />
       <div className="pb-40">

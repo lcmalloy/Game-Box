@@ -1,13 +1,17 @@
 import React from 'react'
 import {BsFillPlayCircleFill} from 'react-icons/bs'
-import FavoriteButton from './FavoriteButton'
 import { useRouter } from 'next/router'
+import {BiChevronDown} from 'react-icons/bi'
+
+import FavoriteButton from './FavoriteButton'
+import useInfoModal from '@/hooks/useInfoModal'
 
 interface VGCardProps {
   data: Record<string, any>
 }
 const VGCard: React.FC<VGCardProps> = ({data}) => {
   const router = useRouter()
+  const { openModal } = useInfoModal()
 
   return (
   <div className="group bg-zinc-900 col-span relative h-[12vw] w-[20vw]">
@@ -23,6 +27,9 @@ const VGCard: React.FC<VGCardProps> = ({data}) => {
             <BsFillPlayCircleFill size={32}/>
           </div>
           <FavoriteButton videoGameId={data?.id}/>
+          <div onClick={() => openModal(data?.id)} className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-purple-500 border-2 rounded-full flex justify-center items-center transition hover:border-purple-700">
+            <BiChevronDown className="text-purple-500 group-hover/item:text-purple-700" size={30}/>
+          </div>
         </div>
         <p className="text-green-400 font-semibold mt-4">New <span className="text-white">2023</span></p>
         <div className="flex flex-row mt-4 gap-2 items-center">
